@@ -131,5 +131,11 @@ public class SelectionFragment extends Fragment {
 	    uiHelper.onDestroy();
 	}
 	
+	/*public void starMap(View view) {
+	    // Do something in response to button
+		Intent intent = new Intent(getActivity(), MapActivity.class);
+		startActivity(intent);
+	}*/
+	
 
 }

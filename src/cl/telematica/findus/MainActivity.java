@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends FragmentActivity {
 
@@ -178,5 +179,12 @@ public class MainActivity extends FragmentActivity {
 		        onSessionStateChange(session, state, exception);
 		    }
 		};
+		
+		
+		public void starMap(View view) {
+		    // Do something in response to button
+			Intent intent = new Intent(this, MapActivity.class);
+			startActivity(intent);
+		}
 	
 }
