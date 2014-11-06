@@ -18,9 +18,12 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
-            facebook:preset_size="small" />
-	     
-	     <TextView
+            facebook:preset_size="large" />    
+	 
+	 <!-- fin linear layout -->
+	 </LinearLayout>
+	 
+	 <TextView
             android:id="@+id/selection_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,8 +31,6 @@
             android:layout_gravity="center"
             android:textColor="#333"
             android:textSize="18sp" />
-	     
-	 </LinearLayout>
     
 	<Button
     	android:layout_width="wrap_content"

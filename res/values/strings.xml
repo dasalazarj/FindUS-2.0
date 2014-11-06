@@ -8,7 +8,7 @@
     <string name="get_started">Para comenzar debes iniciar sesion con facebook</string>
     <string name="title_facebook_login">Loggin</string>
     <string name="settings">Settings</string>
-    <string name="map_text">Ver a mis contactos</string>
+    <string name="map_text">Ver mi ubicacion</string>
     <string name="second_activity">Mis amigos</string>
 
 </resources>

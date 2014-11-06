@@ -143,7 +143,7 @@ public class MapActivity extends FragmentActivity implements ConnectionCallbacks
 							+","
 							+URLEncoder.encode(String.valueOf(longitude), "UTF-8")
 							+"&radius="
-							+URLEncoder.encode("100", "UTF-8")
+							+URLEncoder.encode("1000", "UTF-8")
 							+"&sensor="
 							+URLEncoder.encode("true", "UTF-8")
 							+"&types="
@@ -158,7 +158,10 @@ public class MapActivity extends FragmentActivity implements ConnectionCallbacks
 		}
 		
 		String usersSearchStr;
-		usersSearchStr = "http://www.mocky.io/v2/545657cdfdfe958b0e9fe720";
+		// para Santiago comuna San Miguel
+		//usersSearchStr = "http://www.mocky.io/v2/545657cdfdfe958b0e9fe720";
+		//para Valparaiso alrededores UTFSM
+		usersSearchStr = "http://www.mocky.io/v2/5459755a942a5ce117984605";
 		new GetUsers().execute(usersSearchStr);
 		
 	}

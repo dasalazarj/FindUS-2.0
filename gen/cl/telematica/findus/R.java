@@ -2161,7 +2161,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020041;
         public static final int com_facebook_loginbutton_silver=0x7f020042;
         public static final int com_facebook_logo=0x7f020043;
-        public static final int com_facebook_picker_default_separator_color=0x7f020081;
+        public static final int com_facebook_picker_default_separator_color=0x7f020082;
         public static final int com_facebook_picker_item_background=0x7f020044;
         public static final int com_facebook_picker_list_focused=0x7f020045;
         public static final int com_facebook_picker_list_longpressed=0x7f020046;
@@ -2212,17 +2212,18 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020073;
         public static final int common_signin_btn_text_pressed_dark=0x7f020074;
         public static final int common_signin_btn_text_pressed_light=0x7f020075;
-        public static final int green_point=0x7f020076;
-        public static final int ic_launcher=0x7f020077;
-        public static final int ic_plusone_medium_off_client=0x7f020078;
-        public static final int ic_plusone_small_off_client=0x7f020079;
-        public static final int ic_plusone_standard_off_client=0x7f02007a;
-        public static final int ic_plusone_tall_off_client=0x7f02007b;
-        public static final int powered_by_google_dark=0x7f02007c;
-        public static final int powered_by_google_light=0x7f02007d;
-        public static final int purple_point=0x7f02007e;
-        public static final int red_point=0x7f02007f;
-        public static final int yellow_point=0x7f020080;
+        public static final int findus_logo=0x7f020076;
+        public static final int green_point=0x7f020077;
+        public static final int ic_launcher=0x7f020078;
+        public static final int ic_plusone_medium_off_client=0x7f020079;
+        public static final int ic_plusone_small_off_client=0x7f02007a;
+        public static final int ic_plusone_standard_off_client=0x7f02007b;
+        public static final int ic_plusone_tall_off_client=0x7f02007c;
+        public static final int powered_by_google_dark=0x7f02007d;
+        public static final int powered_by_google_light=0x7f02007e;
+        public static final int purple_point=0x7f02007f;
+        public static final int red_point=0x7f020080;
+        public static final int yellow_point=0x7f020081;
     }
     public static final class id {
         public static final int action_bar=0x7f080046;
@@ -2238,7 +2239,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f080043;
         public static final int action_mode_bar_stub=0x7f080042;
         public static final int action_mode_close_button=0x7f080035;
-        public static final int action_settings=0x7f080077;
+        public static final int action_settings=0x7f080076;
         public static final int activity_chooser_view_content=0x7f080036;
         public static final int always=0x7f08001e;
         public static final int beginning=0x7f080023;
@@ -2296,7 +2297,7 @@ containing a value of this type.
         public static final int large=0x7f080032;
         public static final int listMode=0x7f080014;
         public static final int list_item=0x7f08003a;
-        public static final int login_button=0x7f080076;
+        public static final int login_button=0x7f080075;
         public static final int match_parent=0x7f08000c;
         public static final int middle=0x7f080024;
         public static final int monochrome=0x7f080013;
@@ -2305,7 +2306,6 @@ containing a value of this type.
         public static final int normal=0x7f080001;
         public static final int picker_subtitle=0x7f080067;
         public static final int production=0x7f080007;
-        public static final int profile_name=0x7f080075;
         public static final int progress_circular=0x7f08002f;
         public static final int progress_horizontal=0x7f080030;
         public static final int radio=0x7f080040;
