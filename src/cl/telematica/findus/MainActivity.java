@@ -10,9 +10,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
 
@@ -20,6 +23,7 @@ public class MainActivity extends FragmentActivity {
 	private static final int SELECTION = 1;
 	private static final int SETTINGS = 2;
 	private static final int FRAGMENT_COUNT = SETTINGS +1;
+	static TextView nombre;
 	
 	private boolean isResumed = false;
 	
@@ -35,6 +39,12 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_main);
+		
+		if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new PlaceholderFragment())
+                    .commit();
+            }
 		
 		FragmentManager fm = getSupportFragmentManager();
 	    fragments[SPLASH] = fm.findFragmentById(R.id.splashFragment);
@@ -183,8 +193,26 @@ public class MainActivity extends FragmentActivity {
 		
 		public void starMap(View view) {
 		    // Do something in response to button
+			// se agrega codigo para pasar nombre a actividad de mapa
 			Intent intent = new Intent(this, MapActivity.class);
+			Bundle b = new Bundle();
+			b.putString("NOMBRE", nombre.toString());
+			intent.putExtras(b);
 			startActivity(intent);
 		}
+		
+		public static class PlaceholderFragment extends Fragment {
+
+	        public PlaceholderFragment() {
+	        }
+
+	        @Override
+	        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	                Bundle savedInstanceState) {
+	            View rootView = inflater.inflate(R.layout.selection, container, false);
+	            nombre = (TextView) rootView.findViewById(R.id.selection_user_name);
+	            return rootView;
+	        }
+	    }
 	
 }

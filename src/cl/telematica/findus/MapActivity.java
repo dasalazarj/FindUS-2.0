@@ -6,13 +6,21 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +48,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MapActivity extends FragmentActivity implements ConnectionCallbacks,
@@ -49,7 +61,7 @@ public class MapActivity extends FragmentActivity implements ConnectionCallbacks
 															 OnMyLocationChangeListener {
 
 	private int userIcon, foodIcon, drinkIcon, shopIcon, otherIcon;
-	
+	private String nombre, latitud, longitud;
 	private GoogleMap theMap;
 	private Marker userMarker;
 	private Location myLocation;
@@ -70,6 +82,9 @@ public class MapActivity extends FragmentActivity implements ConnectionCallbacks
 
 		Intent intent = getIntent();
 		
+		Bundle bundle = intent.getExtras();
+		this.nombre = bundle.getString("NOMBRE");
+
 		//asociacion de iconos a imagenes
 		userIcon = R.drawable.yellow_point;
 		foodIcon = R.drawable.red_point;
@@ -123,6 +138,11 @@ public class MapActivity extends FragmentActivity implements ConnectionCallbacks
 		double longitude = location.getLongitude();
 		LatLng latLng = new LatLng(latitude, longitude);
 		
+		this.latitud = Double.toString(latitude);
+		this.longitud = Double.toString(longitude);
+		
+		post();
+		
 		if(userMarker != null){
 			userMarker.remove();
 		}
@@ -164,6 +184,52 @@ public class MapActivity extends FragmentActivity implements ConnectionCallbacks
 		usersSearchStr = "http://www.mocky.io/v2/5459755a942a5ce117984605";
 		new GetUsers().execute(usersSearchStr);
 		
+	}
+
+	public void post() {
+		Thread nt = new Thread() {
+			@Override
+			public void run() {
+
+				try {
+					final String res;
+					
+						res = enviarPost(nombre, latitud, longitud);
+
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(MapActivity.this, res,
+									Toast.LENGTH_LONG).show();
+						}
+					});
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		};
+		nt.start();
+	}
+	
+	public String enviarPost(String nombre, String latitud, String longitud) {
+
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpContext localContext = new BasicHttpContext();
+		HttpPost httpPost = new HttpPost(
+				"http://www.findus.connectic.cl/send_data/PutData.php");
+		HttpResponse response = null;
+		try {
+			List<NameValuePair> params = new ArrayList<NameValuePair>(3);
+			params.add(new BasicNameValuePair("nombre", nombre));
+			params.add(new BasicNameValuePair("latitud", latitud));
+			params.add(new BasicNameValuePair("longitud", longitud));
+			httpPost.setEntity(new UrlEncodedFormEntity(params));
+			response = httpClient.execute(httpPost, localContext);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return response.toString();
+
 	}
 
 	@Override
